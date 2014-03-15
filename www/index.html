@@ -56,11 +56,11 @@
     // onSuccess: Get a snapshot of the current acceleration
     //
     function onSuccess(acceleration) {
-	document.getElementById("x").text=acceleration.x;
-	document.getElementById("y").text=acceleration.y;
-	document.getElementById("z").text=acceleration.z;
+	document.getElementById("x").innerHTML=acceleration.x;
+	document.getElementById("y").innerHTML=acceleration.y;
+	document.getElementById("z").innerHTML=acceleration.z;
 	
-	playSound = (x>2) ? true : false
+	playSound = (acceleration.x>2) ? true : false
 	if (playSound) playAudio();
 	}
 
@@ -81,7 +81,9 @@
 	<div>Current acceleration:
 		<span id="x">?</span>,<span id="y">?</span>,<span id="z">?</span>
 	</div>
-	
+<!--	<div>Sensitivity
+	</div>
+	-->
   </body>
 </html>
 
