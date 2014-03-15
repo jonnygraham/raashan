@@ -15,19 +15,22 @@
     // PhoneGap is ready
     //
       function onDeviceReady() {
-        document.getElementById("r").innerHTML="Shake!";
+        document.getElementById("r").innerHTML="Shake me!";
 		startWatch();
 		
     }
 	
 	function playAudio() {
-		snd = new Media( "audio/9780^NOISEHIT.mp3",audioOnSuccess, audioOnError, audioOnStatus);
+		snd = new Media( "/audio/hit.mp3",audioOnSuccess, audioOnError, audioOnStatus);
 		snd.play();
 	}
 	function audioOnSuccess() {
+		console.log("OK");
     }
     // onError Callback 
     function audioOnError(error) {
+		console.log("error");
+		console.log(error);
     }
 	function audioOnStatus(status) {
         if( status==Media.MEDIA_STOPPED && playSound == true) {
