@@ -55,6 +55,7 @@
         A list of available plugins are available at https://build.phonegap.com/docs/plugins
     -->
 	<gap:plugin name="org.apache.cordova.device-motion" />
+	<gap:plugin name="org.apache.cordova.media" />
 	<gap:plugin name="com.phonegap.plugin.statusbar" >
 		<param name="StatusBarOverlaysWebView" value="false" />
 	</gap:plugin>
