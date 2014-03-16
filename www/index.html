@@ -21,7 +21,7 @@
     }
 	
 	function playAudio() {
-		snd = new Media( "/audio/hit.mp3",audioOnSuccess, audioOnError, audioOnStatus);
+		snd = new Media( "/android_asset/www/audio/hit.mp3",audioOnSuccess, audioOnError, audioOnStatus);
 		snd.play();
 	}
 	function audioOnSuccess() {
@@ -59,13 +59,31 @@
     }
     // onSuccess: Get a snapshot of the current acceleration
     //
+	var lastX = 0;
+	var lastY = 0;
+	var lastZ = 0;
+	var noise = 2.0;
+	var init=false;
     function onSuccess(acceleration) {
 	document.getElementById("x").innerHTML=acceleration.x;
 	document.getElementById("y").innerHTML=acceleration.y;
 	document.getElementById("z").innerHTML=acceleration.z;
+	if (init==true) {
+		var dx = Math.abs(lastX - acceleration.x);
+		var dy = Math.abs(lastY - acceleration.y);
+		var dz = Math.abs(lastZ - acceleration.z);
+		if (dx < noise) dx = 0;
+		if (dy < noise) dy = 0;
+		if (dz < noise) dz = 0;
+		playSound = (dx>3) ? true : false
+		if (playSound) playAudio();
+	}
+	lastX = x;
+	lastY = y;
+	lastZ = z;
+	init=true;
 	
-	playSound = (acceleration.x>2) ? true : false
-	if (playSound) playAudio();
+	
 	}
 
     // onError: Failed to get the acceleration
