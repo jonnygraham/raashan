@@ -19,9 +19,10 @@
 		startWatch();
 		
     }
-	
+	//var filename="hit.mp3";
+	var filename="reduceTCO.mp3";
 	function playAudio() {
-		if (snd == null) snd = new Media( "/android_asset/www/audio/hit.mp3",audioOnSuccess, audioOnError, audioOnStatus);
+		if (snd == null) snd = new Media( "/android_asset/www/audio/"+filename,audioOnSuccess, audioOnError, audioOnStatus);
 		snd.play();
 	}
 	function audioOnSuccess() {
@@ -86,7 +87,7 @@
     // onError: Failed to get the acceleration
     //
     function onError() {
-        alert('Coul not get acceleration reading!');
+        alert('Could not get acceleration reading!');
     }
 	
 	
